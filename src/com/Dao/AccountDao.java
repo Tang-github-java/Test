@@ -16,6 +16,7 @@ import com.entry.Account;
 public class AccountDao {
 	public class as{
 		System.out.println(123);
+                System.out.println(“实体搜图搜合同搜狐”);
 		}
 
 	public class aaa{
