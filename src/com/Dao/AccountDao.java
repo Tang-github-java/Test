@@ -6,22 +6,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.entry.Account;
-public class aaa(){
-system.out.princtl("我用github修改文件内容")
-}
+
 /**
  * Dao 是 数据持久层 也叫 模型层 就是MVC中的M
  * 
  * Dao的命名规则: 实体类名+Dao
  */
-public class as{
-System.out.println(123);sss
-}
-
-
-
 
 public class AccountDao {
+	public class as{
+		System.out.println(123);
+		}
+
+	public class aaa{
+
+		System.out.println("tiangjialei yitiao shuj ");
+		}
 
 	/**
 	 * 得到数据库链接
