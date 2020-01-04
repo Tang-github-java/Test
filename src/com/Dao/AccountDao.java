@@ -14,6 +14,13 @@ system.out.princtl("我用github修改文件内容")
  * 
  * Dao的命名规则: 实体类名+Dao
  */
+public class as{
+System.out.println(123);sss
+}
+
+
+
+
 public class AccountDao {
 
 	/**
