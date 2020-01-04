@@ -14,15 +14,15 @@ import com.entry.Account;
  */
 
 public class AccountDao {
-	public class as{
+	public void as() {
 		System.out.println(123);
-                System.out.println(“实体搜图搜合同搜狐”);
-		}
+		System.out.println("实体搜图搜合同搜狐");
+	}
 
-	public class aaa{
+	public void aaa() {
 
 		System.out.println("tiangjialei yitiao shuj ");
-		}
+	}
 
 	/**
 	 * 得到数据库链接
