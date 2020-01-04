@@ -6,26 +6,28 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.entry.Account;
-
+public class aaa(){
+system.out.princtl("æˆ‘ç”¨githubä¿®æ”¹æ–‡ä»¶å†…å®¹")
+}
 /**
- * Dao ÊÇ Êı¾İ³Ö¾Ã²ã Ò²½Ğ Ä£ĞÍ²ã ¾ÍÊÇMVCÖĞµÄM
+ * Dao æ˜¯ æ•°æ®æŒä¹…å±‚ ä¹Ÿå« æ¨¡å‹å±‚ å°±æ˜¯MVCä¸­çš„M
  * 
- * DaoµÄÃüÃû¹æÔò: ÊµÌåÀàÃû+Dao
+ * Daoçš„å‘½åè§„åˆ™: å®ä½“ç±»å+Dao
  */
 public class AccountDao {
 
 	/**
-	 * µÃµ½Êı¾İ¿âÁ´½Ó
+	 * å¾—åˆ°æ•°æ®åº“é“¾æ¥
 	 * 
 	 * @return
 	 */
 	private static Connection getConn() {
 		Connection conn = null;
 		try {
-			// ¸ù¾İÊı¾İ¿âµÄÇı¶¯ÀàÂ·¾¶(·´Éä)¼ÓÔØÊı¾İ¿âµÄÇı¶¯
+			// æ ¹æ®æ•°æ®åº“çš„é©±åŠ¨ç±»è·¯å¾„(åå°„)åŠ è½½æ•°æ®åº“çš„é©±åŠ¨
 			String className = PropertiesUtil.getValue("driver");
 			Class.forName(className);
-			// ¸ù¾İurlºÍÕË»§Ãû,ÃÜÂëµÃµ½Êı¾İ¿âµÄÁ´½Ó
+			// æ ¹æ®urlå’Œè´¦æˆ·å,å¯†ç å¾—åˆ°æ•°æ®åº“çš„é“¾æ¥
 			String url = PropertiesUtil.getValue("url");
 			String user = PropertiesUtil.getValue("username");
 			String password = PropertiesUtil.getValue("password");
@@ -36,16 +38,16 @@ public class AccountDao {
 		return conn;
 	}
 	/**
-	 * µÃµ½Êı¾İ¿âÁ´½Ó
+	 * å¾—åˆ°æ•°æ®åº“é“¾æ¥
 	 * 
 	 * @return
 	 */
 	// private Connection getConn() {
 //		Connection conn = null;
 //		try {
-//			// ¸ù¾İÊı¾İ¿âµÄÇı¶¯ÀàÂ·¾¶(·´Éä)¼ÓÔØÊı¾İ¿âµÄÇı¶¯
+//			// æ ¹æ®æ•°æ®åº“çš„é©±åŠ¨ç±»è·¯å¾„(åå°„)åŠ è½½æ•°æ®åº“çš„é©±åŠ¨
 //			Class.forName("com.mysql.cj.jdbc.Driver");
-//			// ¸ù¾İurlºÍÕË»§Ãû,ÃÜÂëµÃµ½Êı¾İ¿âµÄÁ´½Ó
+//			// æ ¹æ®urlå’Œè´¦æˆ·å,å¯†ç å¾—åˆ°æ•°æ®åº“çš„é“¾æ¥
 //			conn = (Connection) DriverManager
 //					.getConnection("jdbc:mysql://localhost:3306/java?useSSL=false&serverTimezone=UTC", "root", "123");
 //		} catch (Exception e) {
@@ -55,19 +57,19 @@ public class AccountDao {
 //	}
 
 	/**
-	 * Ìí¼Ó
+	 * æ·»åŠ 
 	 * 
 	 * @param account
 	 */
 	public void add(Account account) {
 		try {
 
-			Connection conn = getConn();// £¬ÓÃÓÚÔÚÒÑ¾­½¨Á¢Êı¾İ¿âÁ¬½ÓµÄ»ù´¡ÉÏ£¬ÏòÊı¾İ¿â·¢ËÍÒªÖ´ĞĞµÄSQLÓï¾ä¡£Statement¶ÔÏó£¬ÓÃÓÚÖ´ĞĞ²»´ø²ÎÊıµÄ¼òµ¥SQLÓï¾ä¡£ÓÃÓÚÖ´ĞĞ¾²Ì¬ SQL
-			String sql = "insert into account(acc,pswd) values(?,?)";// ´´½¨Ò»¸öÒªÖ´ĞĞµÄsql
+			Connection conn = getConn();// ï¼Œç”¨äºåœ¨å·²ç»å»ºç«‹æ•°æ®åº“è¿æ¥çš„åŸºç¡€ä¸Šï¼Œå‘æ•°æ®åº“å‘é€è¦æ‰§è¡Œçš„SQLè¯­å¥ã€‚Statementå¯¹è±¡ï¼Œç”¨äºæ‰§è¡Œä¸å¸¦å‚æ•°çš„ç®€å•SQLè¯­å¥ã€‚ç”¨äºæ‰§è¡Œé™æ€ SQL
+			String sql = "insert into account(acc,pswd) values(?,?)";// åˆ›å»ºä¸€ä¸ªè¦æ‰§è¡Œçš„sql
 			PreparedStatement st = conn.prepareStatement(sql);
 			st.setString(1, account.getAcc());
 			st.setString(2, account.getPswd());
-			st.executeUpdate(); // PreparedStatement ÔÚÖ´ĞĞ executeUpdate Ê±²»ĞèÒªÔÙ¼Ósql!!!!!
+			st.executeUpdate(); // PreparedStatement åœ¨æ‰§è¡Œ executeUpdate æ—¶ä¸éœ€è¦å†åŠ sql!!!!!
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -75,12 +77,12 @@ public class AccountDao {
 	}
 
 //	/**
-//	 * ¸üĞÂÊı¾İ
+//	 * æ›´æ–°æ•°æ®
 //	 */
 //	public void update(Account account) {
 //		try {
 //			Connection conn = getConn();
-//			String sql = " update account set pswd =? where  acc=? ";// ´´½¨Ò»¸öÒªÖ´ĞĞµÄsql
+//			String sql = " update account set pswd =? where  acc=? ";// åˆ›å»ºä¸€ä¸ªè¦æ‰§è¡Œçš„sql
 //			PreparedStatement st = conn.prepareStatement(sql);
 //			st.setString(1, account.getPswd());
 //			st.setString(2, account.getAcc());
@@ -92,12 +94,12 @@ public class AccountDao {
 //	}
 
 //	/**
-//	 * É¾³ıÊı¾İ
+//	 * åˆ é™¤æ•°æ®
 //	 */
 //	public void delete(String acc) {
 //		try {
 //			Connection conn = getConn();
-//			String sql = " delete from account where  acc=? ";// ´´½¨Ò»¸öÒªÖ´ĞĞµÄsql
+//			String sql = " delete from account where  acc=? ";// åˆ›å»ºä¸€ä¸ªè¦æ‰§è¡Œçš„sql
 //			PreparedStatement st = conn.prepareStatement(sql);
 //			st.setString(1, acc);
 //			st.executeUpdate();
@@ -108,7 +110,7 @@ public class AccountDao {
 //	}
 //
 //	/**
-//	 * ²éÑ¯Êı¾İ
+//	 * æŸ¥è¯¢æ•°æ®
 //	 */
 //	public List<Account> query() {
 //		List<Account> list = new ArrayList<>();
@@ -116,13 +118,13 @@ public class AccountDao {
 //			Connection conn = getConn();
 //			Statement st = conn.createStatement();
 //			String sql = "select * from account ";
-//			ResultSet rs = st.executeQuery(sql); // ÒªÖ´ĞĞselect Óï¾ä±ØĞëÊ¹ÓÃ executeQuery ·½·¨ ½«²éÑ¯³öÀ´µÄÊı¾İ·Åµ½ÁËResultSet¶ÔÏóÖĞ
-//			while (rs.next()) { // ÕâÀïÊÇÔÚÈ¡²éÑ¯½á¹û ÔÚResultSet¶ÔÏóÖĞµÄÊı¾İ,ĞèÒªÍ¨¹ıwhileÑ­»·²ÅÄÜÈ¡³öÀ´ ResultSetµÄ¶ÔÏó.nextÊÇ¾ÍÏòÏÂÈ¡Ò»¸öÊı¾İ
-//				// ÆäÊµ¾ÍÊÇÒ»¸öÒşÊ½ÓÎ±ê Ã¿ÏòÏÂ×ßÒ»¸ö,Èç¹ûÓĞÊı¾İ¾Í»á½øÀ´,ÔòÖ±½ÓÓÃResultSet¶ÔÏñ.·½·¨(Èç¹ûÊÇint¾Í.getInt,..)¾ÍÄÜµÃµ½ÏàÓ¦µÄÖµ
+//			ResultSet rs = st.executeQuery(sql); // è¦æ‰§è¡Œselect è¯­å¥å¿…é¡»ä½¿ç”¨ executeQuery æ–¹æ³• å°†æŸ¥è¯¢å‡ºæ¥çš„æ•°æ®æ”¾åˆ°äº†ResultSetå¯¹è±¡ä¸­
+//			while (rs.next()) { // è¿™é‡Œæ˜¯åœ¨å–æŸ¥è¯¢ç»“æœ åœ¨ResultSetå¯¹è±¡ä¸­çš„æ•°æ®,éœ€è¦é€šè¿‡whileå¾ªç¯æ‰èƒ½å–å‡ºæ¥ ResultSetçš„å¯¹è±¡.nextæ˜¯å°±å‘ä¸‹å–ä¸€ä¸ªæ•°æ®
+//				// å…¶å®å°±æ˜¯ä¸€ä¸ªéšå¼æ¸¸æ ‡ æ¯å‘ä¸‹èµ°ä¸€ä¸ª,å¦‚æœæœ‰æ•°æ®å°±ä¼šè¿›æ¥,åˆ™ç›´æ¥ç”¨ResultSetå¯¹åƒ.æ–¹æ³•(å¦‚æœæ˜¯intå°±.getInt,..)å°±èƒ½å¾—åˆ°ç›¸åº”çš„å€¼
 //				Account we = new Account();
 //				we.setAcc(rs.getString("acc"));
 //				we.setPswd(rs.getString("pswd"));
-//				list.add(we); // Ìí¼Óµ½¼¯ºÏÖĞ
+//				list.add(we); // æ·»åŠ åˆ°é›†åˆä¸­
 //			}
 //		} catch (Exception e) {
 //			e.printStackTrace();
@@ -131,7 +133,7 @@ public class AccountDao {
 //	}
 
 	/**
-	 * ¸ù¾İÕË»§ÃûºÍÃÜÂë²é³ö¶ÔÏó
+	 * æ ¹æ®è´¦æˆ·åå’Œå¯†ç æŸ¥å‡ºå¯¹è±¡
 	 * 
 	 * @param acc
 	 * @param pswd
@@ -142,12 +144,12 @@ public class AccountDao {
 		try {
 			Connection conn = getConn();
 			String sql = " select * from account where acc = ? and pswd = ? ";
-			PreparedStatement pst = conn.prepareStatement(sql); // PreparedStatementÊÇÓÃÀ´Ö´ĞĞsqlµÄ
+			PreparedStatement pst = conn.prepareStatement(sql); // PreparedStatementæ˜¯ç”¨æ¥æ‰§è¡Œsqlçš„
 			pst.setString(1, acc);
 			pst.setString(2, pswd);
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				account = new Account();// ²éµ½ÓĞÖµ,½øÀ´×°Ê±²Ånew
+				account = new Account();// æŸ¥åˆ°æœ‰å€¼,è¿›æ¥è£…æ—¶æ‰new
 				account.setAcc(rs.getString("acc"));
 				account.setPswd(rs.getString("pswd"));
 			}
@@ -158,7 +160,7 @@ public class AccountDao {
 	}
 
 //	/**
-//	 * ¸ù¾İÕË»§Ãû²é³ö¶ÔÏó
+//	 * æ ¹æ®è´¦æˆ·åæŸ¥å‡ºå¯¹è±¡
 //	 * 
 //	 * @param acc
 //	 * @return Account;
@@ -168,11 +170,11 @@ public class AccountDao {
 //		try {
 //			Connection conn = getConn();
 //			String sql = " select * from account where acc = ? ";
-//			PreparedStatement pst = conn.prepareStatement(sql); // PreparedStatementÊÇÓÃÀ´Ö´ĞĞsqlµÄ
+//			PreparedStatement pst = conn.prepareStatement(sql); // PreparedStatementæ˜¯ç”¨æ¥æ‰§è¡Œsqlçš„
 //			pst.setString(1, acc);
 //			ResultSet rs = pst.executeQuery();
 //			while (rs.next()) {
-//				account = new Account();// ²éµ½ÓĞÖµ,½øÀ´×°Ê±²Ånew
+//				account = new Account();// æŸ¥åˆ°æœ‰å€¼,è¿›æ¥è£…æ—¶æ‰new
 //				account.setAcc(rs.getString("acc"));
 //				account.setPswd(rs.getString("pswd"));
 //			}
